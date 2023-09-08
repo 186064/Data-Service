@@ -5,8 +5,6 @@ from airflow.utils.dates import days_ago
 from google.cloud import bigquery
 import subprocess
 
- 
-
 def execute_sql_script():
     gcs_blob_path = "gs://taskbucket1/my_folder/Customerscript.sql"
     gsutil_cmd = ["gsutil", "cat", gcs_blob_path]
@@ -20,8 +18,6 @@ def execute_sql_script():
     except subprocess.CalledProcessError as e:
         print("Error executing gsutil command:", e.output)
 
- 
-
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
@@ -30,8 +26,6 @@ default_args = {
     "retry_delay": timedelta(minutes=5),
 }
 
- 
-
 with DAG(
     "execute_sql_to_gcs_dag",
     default_args=default_args,
@@ -39,13 +33,7 @@ with DAG(
     catchup=False,
 ) as dag:
 
- 
-
     execute_sql_task = PythonOperator(
         task_id="execute_sql_task",
         python_callable=execute_sql_script,
     )
-
- 
-
-    execute_sql_task
