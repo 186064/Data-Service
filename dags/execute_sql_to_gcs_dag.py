@@ -29,7 +29,7 @@ default_args = {
 with DAG(
     "execute_sql_to_gcs_dag",
     default_args=default_args,
-    schedule_interval=None, 
+    schedule=None, 
     catchup=False,
 ) as dag:
 
