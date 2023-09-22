@@ -25,7 +25,7 @@ default_args = {
  
 
 dag = DAG(
-    dag_id='transfer_file_to_bq',
+    dag_id='transfer_file_to_bq', #dag name
     default_args=default_args,
     description='Transfering file from gcs to bigquery',
     schedule_interval=None,
