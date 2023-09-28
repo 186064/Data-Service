@@ -22,7 +22,7 @@ dag = DAG(
     dag_id='File_transfer',
     default_args=default_args,
     description='Transfering file from gcs to bigquery',
-    schedule=nan,
+    schedule=None,
     catchup=False,
 )
 
